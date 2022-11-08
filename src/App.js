@@ -10,12 +10,14 @@ import SignUp from './pages/signUp/SignUp';
 import Login from './pages/login/Login';
 import NotFound from './pages/notFound/NotFound';
 import Services from './pages/services/Services';
+import ServiceDetails from './pages/serviceDetails/ServiceDetails';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Main />}>
       <Route path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/services/:id" element={<ServiceDetails />} />
       <Route path="/reviews" element={<Reviews />} />
       <Route path="/addServices" element={<AddServices />} />
       <Route path="/signUp" element={<SignUp />} />
