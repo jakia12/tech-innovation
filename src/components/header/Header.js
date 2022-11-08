@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Navbar, Dropdown, Avatar } from 'flowbite-react';
 const Header = () => {
     return (
-        <div>
+        <div className='px-12'>
             <Navbar
                 fluid={true}
                 rounded={true}

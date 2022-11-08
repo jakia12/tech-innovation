@@ -1,0 +1,25 @@
+.img_wrapper:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s ease-in-out;
+
+}
+
+.link_icon {
+    cursor: pointer;
+    visibility: hidden;
+    transition: all 0.35se ease-in;
+}
+
+.service_card:hover .img_wrapper:before,
+.service_card:hover .link_icon {
+    opacity: 1;
+    visibility: visible;
+}

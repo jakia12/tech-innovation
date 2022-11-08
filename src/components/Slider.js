@@ -1,4 +1,5 @@
 import React from 'react'
+import Slider1 from '../images/slider3.jpg';
 
 const Slider = () => {
     return (
@@ -9,7 +10,7 @@ const Slider = () => {
                 <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
 
                     <div className="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20" data-carousel-item="active">
-                        <img src="/docs/images/carousel/carousel-1.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                        <img src={Slider1} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
                     </div>
 
                     <div className="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full z-10" data-carousel-item="">
