@@ -54,16 +54,16 @@ const ServiceDetails = () => {
                         <div className="w-full md:w-4/12 ">
                             <div className='service_category ml-6 shadow-cyan-300shadow-lg shadow-blue-500/50 px-4'>    <ul>
                                 {services.map((service) => (
+                                    <Link to={`/services/${service._id}`}>
+                                        <li
 
-                                    <li
-
-                                        key={service._id}
-                                        className='bg-nudeBlue text-dark w-full text-lg py-4 px-12 rounded my-4 font-medium'>
-                                        <Link className=''> {service.category}</Link>
+                                            key={service._id}
+                                            className='w-full bg-nudeBlue text-dark  text-lg py-4 px-12 rounded my-4 font-medium'>
+                                            <span> {service.category}</span>
 
 
-                                    </li>
-
+                                        </li>
+                                    </Link>
                                 ))}
                             </ul>
                             </div>
