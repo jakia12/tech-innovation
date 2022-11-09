@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import SingleCard from '../../components/singleCard/SingleCard';
+import { DataState } from '../../context/DataProvider';
+import Banner1 from '../../images/banner1.jpg';
 import './Services.css';
 
 const Services = () => {
     //state for services data
-    const [services, setServices] = useState([]);
 
-    // calling api data
-    useEffect(() => {
-        fetch('http://localhost:5000/services')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setServices(data);
-            })
-            .catch(err => console.log(err))
-    }, []);
+    const { services } = DataState();
 
 
     return (
         <>
-            <section className="page_banner bg_overlay">
+            <section
+                className="page_banner bg_overlay"
+                style={{ backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${Banner1})` }}
+            >
                 <div className="flex items-center justify-center banner_wrapper">
                     <div className="banner_content ">
                         <h3 className="text-3xl text-white font-medium">
