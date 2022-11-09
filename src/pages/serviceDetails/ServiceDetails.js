@@ -5,11 +5,14 @@ import Banner2 from '../../images/banner2.jpg';
 import ServiceCategory from '../../widgets/category/ServiceCategory';
 import { DataState } from '../../context/DataProvider';
 import { Link } from 'react-router-dom';
+import { AuthState } from '../../context/AuthProvider';
 
 const ServiceDetails = () => {
     //widget data
     const { services } = DataState();
 
+    //get the signed in user
+    const { user } = AuthState();
 
     const { _id, title, img, description, features_heading, features_list } = useLoaderData();
 
@@ -47,6 +50,101 @@ const ServiceDetails = () => {
                                         }
 
                                     </ul>
+                                </div>
+                            </div>
+                            <hr className='my-8' />
+                            {/* review section */}
+                            <div className="review_section text-left">
+                                <h2 className="text-dark text-2xl font-semibold py-4 ">Please add a review</h2>
+                                <div className="review_form_wrapper">
+                                    <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+
+                                        <div>
+                                            <div className="mb-2 block">
+
+                                            </div>
+                                            <TextInput
+                                                id="name"
+                                                type="text"
+                                                value={name}
+                                                onChange={handleNameChange}
+                                                placeholder=" Your Name"
+                                                required={true}
+                                                shadow={true}
+                                            />
+
+                                        </div>
+
+                                        <div>
+                                            <div className="mb-2 block">
+
+                                            </div>
+                                            <TextInput
+                                                id="email2"
+                                                type="email"
+                                                value={email}
+                                                onChange={handleEmailChange}
+                                                placeholder="Your Email"
+                                                required={true}
+                                                shadow={true}
+                                            />
+
+                                        </div>
+                                        <div>
+                                            <div className="mb-2 block">
+
+                                            </div>
+                                            <TextInput
+                                                id="rating"
+                                                type="text"
+                                                value={rating}
+                                                onChange={handleRatingChange}
+                                                placeholder="Your rating"
+                                                required={true}
+                                                shadow={true}
+                                            />
+                                        </div>
+                                        <div>
+
+                                            <div className="mb-2 block">
+
+                                            </div>
+                                            <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>
+
+                                        </div>
+
+                                        {/* <div className="flex items-center gap-2">
+<Checkbox id="agree" />
+<Label htmlFor="agree">
+    I agree with the{' '}
+    <a
+        href="/forms"
+        className="text-blue-600 hover:underline dark:text-blue-500"
+    >
+        terms and conditions
+    </a>
+</Label>
+</div> */}
+
+                                        {
+                                            user?.email ?
+                                                (<button
+                                                    type='submit'
+                                                    className="text-white py-2 rounded-lg text-lg  bg-lightBlue">
+                                                    Submit Review
+                                                </button>) :
+                                                (
+                                                    <Link to="/login">
+                                                        <button
+                                                            type='submit'
+                                                            className="text-white py-2 rounded-lg text-lg  bg-lightBlue">
+                                                            Submit Review
+                                                        </button>
+                                                    </Link>
+                                                )
+                                        }
+
+                                    </form>
                                 </div>
                             </div>
 

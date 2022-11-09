@@ -11,6 +11,7 @@ import Login from './pages/login/Login';
 import NotFound from './pages/notFound/NotFound';
 import Services from './pages/services/Services';
 import ServiceDetails, { loader as serviceLoader } from './pages/serviceDetails/ServiceDetails';
+import PrivateRoute from './route/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -18,8 +19,8 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
       <Route path="/services/:serviceId" element={<ServiceDetails />} loader={serviceLoader} />
-      <Route path="/reviews" element={<Reviews />} />
-      <Route path="/addServices" element={<AddServices />} />
+      <Route path="/reviews" element={<PrivateRoute><Reviews /></PrivateRoute>} />
+      <Route path="/addServices" element={<PrivateRoute><AddServices /></PrivateRoute>} />
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
