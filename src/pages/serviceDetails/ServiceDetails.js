@@ -93,18 +93,23 @@ const ServiceDetails = () => {
     }
 
     //access all the reviews
-
+    // 
     useEffect(() => {
         const url = `http://localhost:5000/reviews?reviewId=${_id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                // const serviceReview = data.filter((review) => review._id === _id);
                 setReviews(data);
             })
             .catch(err => console.log(err))
 
     }, [_id]);
+
+
+
+
 
     //handle alert when user not logged in
     const handleAlert = () => {

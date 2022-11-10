@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import Slider from '../../components/Slider'
+
 import { Link } from 'react-router-dom';
 import FadeLoader from "react-spinners/FadeLoader";
 import './Home.css';
 import SingleCard from '../../components/singleCard/SingleCard';
 import { DataState } from '../../context/DataProvider';
 import useTitle from '../../hooks/useTitle';
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import './Home.css';
 
 const Home = () => {
     const [services, setServices] = useState([]);
@@ -39,10 +43,84 @@ const Home = () => {
 
     //create dynamic title
     useTitle('Home');
+
+    //react slick slider
+    var settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        arrows: false,
+
+
+        autoplaySpeed: 2000,
+        fade: true,
+    };
+
     return (
         <>
             <section className='slider_section'>
-                <Slider />
+                <div className='carousel_sec clearfix'>
+
+                    <Slider {...settings}>
+                        <div className='slider_1 sl-h'>
+
+                            <div className="slider-content">
+                                <div className="content_wraper">
+                                    <h2 className='text-4xl font-medium text-white slider_header lg:max-w-3xl max-w-xl pb-4' >Flexible,scalable and intuitive services for all your business needs </h2>
+
+
+                                    <Link to="/blog" >
+                                        <button type="button"
+                                            className="text-white bg-lightBlue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-8 py-2.5 mt-5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                            Learn More
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='slider_2 sl-h'>
+                            <div className="slider-content">
+                                <div className="content_wraper">
+                                    <h2 className='text-4xl font-medium text-white slider_header lg:max-w-3xl max-w-xl pb-4' >Flexible,scalable and intuitive services for all your business needs </h2>
+
+
+                                    <Link to="/blog" >
+                                        <button type="button"
+                                            className="text-white bg-lightBlue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-8 py-2.5 mt-5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                            Learn More
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='slider_3 sl-h'>
+                            <div className="slider-content">
+                                <div className="content_wraper">
+                                    <h2 className='text-4xl font-medium text-white slider_header lg:max-w-3xl max-w-xl pb-4' >Flexible,scalable and intuitive services for all your business needs </h2>
+
+
+                                    <Link to="/blog" >
+                                        <button type="button"
+                                            className="text-white bg-lightBlue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-8 py-2.5 mt-5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                            Learn More
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </Slider>
+
+
+
+                </div>
 
             </section>
             <section className="loading_spinner">
@@ -60,7 +138,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className="services_section py-14 lg:py-20">
+            <section className="services_section bg-blue-50 py-14 lg:py-20">
                 <div className="container mx-auto w-full lg:max-w-6xl px-4 lg:px-6">
 
                     <div className="text-center">
@@ -68,7 +146,7 @@ const Home = () => {
                             My Services
                         </h2>
                     </div>
-                    <div className="flex items-center">
+                    <div className="md:flex items-center flex-wrap">
 
                         {
                             services.map((service) => (

@@ -7,14 +7,20 @@ import "react-toastify/dist/ReactToastify.css";
 import useTitle from '../../hooks/useTitle';
 
 const Reviews = () => {
-    const { user } = AuthState();
+    const { user, logOut } = AuthState();
 
     //access the reviews data
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
         const url = `http://localhost:5000/reviews?email=${user?.email}`;
-        fetch(url)
+        fetch(url
+            // {
+            //     headers: {
+            //         authorization: `Bearer ${localStorage.getItem('genius-token')}`
+            //     }
+            // }
+        )
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -34,7 +40,12 @@ const Reviews = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        alert('Review deleted successfully');
+
+                        toast.success("Wow!!! Your Review deleted successfully", {
+                            position: toast.POSITION.TOP_CENTER,
+                            toastId: customId1,
+                            autoClose: 1000
+                        });
                         const remainingReview = reviews.filter((review) => review._id !== reviewItem._id);
                         setReviews(remainingReview);
                     }
@@ -63,14 +74,14 @@ const Reviews = () => {
                     </div>
                 </div>
             </section>
-            <section className="reviews_section py-14 lg:py-20">
+            <section className="reviews_section py-14 lg:py-20 bg-nudeBlue">
                 <div className="container w-full lg:max-w-6xl px-5 lg:px-6">
                     <h2 className="text-3xl font-semibold text-dark pt-1 pb-14">
                         My Reviews
                     </h2>
 
                     {
-                        reviews.length > 0 ? (
+                        reviews?.length > 0 ? (
                             <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -95,7 +106,7 @@ const Reviews = () => {
                                     <tbody>
 
                                         {
-                                            reviews.map((review) => (
+                                            reviews?.map((review) => (
                                                 <tr key={review._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                                     <th scope="row" className="py-4  text-dark text-base px-6 font-medium  whitespace-nowrap dark:text-white">
                                                         {review.serviceName}

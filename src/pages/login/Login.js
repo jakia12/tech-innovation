@@ -7,7 +7,7 @@ import useTitle from '../../hooks/useTitle';
 
 
 const Login = () => {
-    const { login, setLoading, googleSignIn } = AuthState();
+    const { login, setLoading, googleSignIn, logOut } = AuthState();
 
     //send the user to the redirecting path
 
@@ -18,12 +18,12 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     //email state
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState('');
     //password state
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState('');
 
     //error handling while login
-    const [error, setError] = useState();
+    const [error, setError] = useState('');
 
 
     //handle email change
@@ -47,6 +47,27 @@ const Login = () => {
                 setPassword('');
                 setError('');
                 navigate(from, { replace: true });
+                // const currUser = {
+                //     email: user.email
+                // };
+
+                // fetch('http://localhost:5000/jwt', {
+                //     method: "POST",
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(currUser)
+                // })
+                //     .then((res) => res.json())
+                //     .then(data => {
+                //         console.log(data);
+                //         // // local storage is the easiest but not the 
+                //         localStorage.setItem('genius-token', data.token);
+                //         navigate(from, { replace: true });
+                //     })
+                //     .catch((err) => {
+                //         console.error(err)
+                //     })
             })
             .catch((err) => {
                 console.log(err);

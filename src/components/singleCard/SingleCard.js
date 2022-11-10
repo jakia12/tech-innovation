@@ -12,7 +12,7 @@ const SingleCard = ({ service }) => {
     const { _id, category, title, price, description, img } = service;
 
     return (
-        <div className="w-full md:w-6/12 lg:w-4/12  text-left">
+        <div className="w-full lg:w-4/12  text-left">
 
             <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-4 my-4 service_card">
 

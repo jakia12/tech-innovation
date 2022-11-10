@@ -60,7 +60,7 @@ const Services = () => {
                         </h2>
                     </div>
 
-                    <div className="flex items-center flex-wrap">
+                    <div className="md:flex items-center flex-wrap">
                         {
                             services.map((service) => (
                                 <SingleCard

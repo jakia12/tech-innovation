@@ -16,7 +16,7 @@ const Header = () => {
             })
     }
     return (
-        <div className='px-12'>
+        <div className='lg:px-8 px-2 py-5'>
             < Navbar
                 fluid={true}
                 rounded={true}
