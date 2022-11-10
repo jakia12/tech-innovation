@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Slider from '../../components/Slider'
 import { Link } from 'react-router-dom';
-
-
+import FadeLoader from "react-spinners/FadeLoader";
 import './Home.css';
 import SingleCard from '../../components/singleCard/SingleCard';
+import { DataState } from '../../context/DataProvider';
 
 const Home = () => {
     const [services, setServices] = useState([]);
+
+    //get loading spinner from datastate
+    const { isLoading, setIsLoading } = DataState();
+
     const [limit, setLimit] = useState(3);
 
     useEffect(() => {
@@ -17,13 +21,41 @@ const Home = () => {
             .then(data => {
                 console.log(data);
                 setServices(data);
+                setIsLoading(false);
             })
     }, [limit]);
+
+
+    //spinner state
+    let [color, setColor] = useState("#22A7F0");
+
+
+    const override = {
+        display: "block",
+        margin: "0 auto",
+        borderColor: "red",
+    };
+
     return (
         <>
             <section className='slider_section'>
                 <Slider />
 
+            </section>
+            <section className="loading_spinner">
+                <div className="container w-full mx-auto lg:max-w-6xl px-4 lg:px-6">
+                    <div className={`text-center  sweet-loading ${(isLoading ? "block py-12" : "none")}`}>
+
+                        <FadeLoader
+                            color={color}
+                            loading={isLoading}
+                            cssOverride={override}
+                            size={150}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div>
+                </div>
             </section>
             <section className="services_section py-14 lg:py-20">
                 <div className="container mx-auto w-full lg:max-w-6xl px-4 lg:px-6">

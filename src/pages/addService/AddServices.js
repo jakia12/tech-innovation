@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { TextInput } from 'flowbite-react';
 import Banner2 from '../../images/banner2.jpg';
-
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 const AddServices = () => {
 
     //state for form handling
@@ -44,10 +45,48 @@ const AddServices = () => {
     const handleServiceSubmit = (e) => {
         e.preventDefault();
 
+        const service = {
+            category: category,
+            img: imgUrl,
+            price: price,
+            title: title,
+            description: description
+        }
+
+        //send data to the server
+        fetch('http://localhost:5000/services', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(service)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success("Wow!!! Your service is added successfully", {
+                        position: toast.POSITION.TOP_CENTER,
+                        toastId: customId1,
+                        autoClose: 1000
+                    });
+                }
+                setCategory('');
+                setImgUrl('');
+                setPrice('');
+                setTitle('');
+                setDescription('');
+
+
+            })
+            .catch(err => console.log(err))
 
     }
 
 
+    //react toastify
+    const customId1 = "custom-id-yes";
+    const customId2 = "custom-id-no";
 
     return (
         <>

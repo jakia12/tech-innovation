@@ -7,6 +7,8 @@ import { DataState } from '../../context/DataProvider';
 import { Link } from 'react-router-dom';
 import { AuthState } from '../../context/AuthProvider';
 import { TextInput } from 'flowbite-react';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const ServiceDetails = () => {
 
@@ -52,7 +54,7 @@ const ServiceDetails = () => {
             name: name,
             rating: rating,
             userImg: user?.photoURL,
-            email: user?.email,
+            email: user?.email || "Unregistered",
             text: text
         };
 
@@ -69,7 +71,12 @@ const ServiceDetails = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    alert('Review added successfully');
+
+                    toast.success("Wow!!! Your review is added successfully", {
+                        position: toast.POSITION.TOP_CENTER,
+                        toastId: customId1,
+                        autoClose: 1000
+                    });
                     const newReview = review;
                     setReviews([newReview, ...reviews])
 
@@ -98,7 +105,18 @@ const ServiceDetails = () => {
 
     }, [_id]);
 
+    //handle alert when user not logged in
+    const handleAlert = () => {
+        toast.warn("Please login to submit your review", {
+            position: toast.POSITION.TOP_CENTER,
+            toastId: customId1,
+            autoClose: 1000
+        });
+    }
 
+    //react toastify
+    const customId1 = "custom-id-yes";
+    const customId2 = "custom-id-no";
     return (
         <>
             <section
@@ -165,8 +183,9 @@ const ServiceDetails = () => {
                                                 id="email2"
                                                 type="email"
 
-                                                defaultValue={user?.email}
+                                                defaultValue={user?.email || "Unregistered user"}
                                                 readOnly
+
                                                 required={true}
                                                 shadow={true}
                                             />
@@ -226,7 +245,9 @@ const ServiceDetails = () => {
                                                     <Link to="/login">
                                                         <button
                                                             type='submit'
-                                                            className="text-white py-2 rounded-lg text-lg bg-lightBlue">
+                                                            className="text-white py-3 px-7 rounded-lg text-base bg-lightBlue"
+                                                            onClick={handleAlert}
+                                                        >
                                                             Submit Review
                                                         </button>
 

@@ -5,6 +5,8 @@ import Banner2 from '../../images/banner2.jpg';
 import { TextInput } from 'flowbite-react';
 import { AuthState } from '../../context/AuthProvider';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const UpdateReview = () => {
     const { user } = AuthState();
@@ -53,7 +55,12 @@ const UpdateReview = () => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    alert("Review updated successfully");
+                    // alert("Review updated successfully");
+                    toast.success("Wow!!! Your review is updated successfully", {
+                        position: toast.POSITION.TOP_CENTER,
+                        toastId: customId1,
+                        autoClose: 1000
+                    });
                 }
 
             })
@@ -61,6 +68,10 @@ const UpdateReview = () => {
 
 
     }
+
+    //react toastify
+    const customId1 = "custom-id-yes";
+    const customId2 = "custom-id-no";
     return (
         <>
             <section

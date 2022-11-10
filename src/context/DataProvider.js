@@ -6,6 +6,8 @@ const DataProvider = ({ children }) => {
 
     const [services, setServices] = useState([]);
 
+    const [isLoading, setIsLoading] = useState(true);
+
     // calling api data
     useEffect(() => {
         fetch('http://localhost:5000/services')
@@ -13,12 +15,13 @@ const DataProvider = ({ children }) => {
             .then(data => {
                 console.log(data);
                 setServices(data);
+                setIsLoading(false);
             })
             .catch(err => console.log(err))
     }, []);
 
 
-    const getInfo = { services };
+    const getInfo = { services, isLoading, setIsLoading };
 
     return (
         <DataContext.Provider value={getInfo}>

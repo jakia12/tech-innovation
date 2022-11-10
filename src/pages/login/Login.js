@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Label, TextInput } from 'flowbite-react';
 import { AuthState } from '../../context/AuthProvider';
+import { AiOutlineGoogle } from 'react-icons/ai';
+
 
 const Login = () => {
-    const { login, setLoading } = AuthState();
+    const { login, setLoading, googleSignIn } = AuthState();
 
     //send the user to the redirecting path
 
@@ -53,6 +55,19 @@ const Login = () => {
                 setLoading(false);
             })
 
+    }
+
+    //google sign in
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+            })
+            .catch(err => console.log(err))
+            .finally(() => {
+                setLoading(false)
+            })
     }
     return (
         <section className=" login_section lg:py-20 py-14 bg-nudeBlue ">
@@ -126,6 +141,22 @@ const Login = () => {
                     </form>
                     <div className="flex justify-between items-center py-6">
                         <span className="text-lg text-dark font-normal ">Not signed up yet?</span><span className="text-dark text-lg font-normal"> <Link to="/signUp" className='underline'>Sign Up here</Link></span>
+                    </div>
+
+                    <span className="text-xl font-medium my-12 text-dark">Or</span>
+                    <div className="text-center">
+                        <button
+                            type="button"
+                            className="text-white bg-lightBlue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-3 mt-6 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            onClick={handleGoogleLogin}
+                        >
+                            <div className="flex items-center">
+                                <span className="text-xl text-white inline-block "><AiOutlineGoogle />
+                                </span>
+                                <span className='text-lg font-sm ml-2'>Continue with Google</span>
+                            </div>
+
+                        </button>
                     </div>
                 </div>
             </div>
