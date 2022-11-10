@@ -26,3 +26,8 @@
     padding-left: 23px;
     padding-right: 23px;
 }
+
+img.w-full.about_img.rounded {
+    width: 447px;
+
+}

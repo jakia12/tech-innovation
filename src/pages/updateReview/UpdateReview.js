@@ -45,7 +45,7 @@ const UpdateReview = () => {
             text: userText
         };
 
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://tech-innovation-server.vercel.app/reviews/${_id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"

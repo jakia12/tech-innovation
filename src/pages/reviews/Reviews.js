@@ -13,7 +13,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/reviews?email=${user?.email}`;
+        const url = `https://tech-innovation-server.vercel.app/reviews?email=${user?.email}`;
         fetch(url
             // {
             //     headers: {
@@ -33,7 +33,7 @@ const Reviews = () => {
         const agree = window.confirm(`Are you sure want to delete this review`);
 
         if (agree) {
-            fetch(`http://localhost:5000/reviews/${reviewItem._id}`, {
+            fetch(`https://tech-innovation-server.vercel.app/reviews/${reviewItem._id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

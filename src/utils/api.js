@@ -1,7 +1,7 @@
 
 //get single service 
 export const getSingleService = async (id) => {
-    const res = await fetch(`http://localhost:5000/services/${id}`);
+    const res = await fetch(`https://tech-innovation-server.vercel.app/services/${id}`);
     const data = await res.json();
     return data;
 }
@@ -9,7 +9,7 @@ export const getSingleService = async (id) => {
 
 //get single review
 export const getSingleReview = async (id) => {
-    const res = await fetch(`http://localhost:5000/reviews/${id}`);
+    const res = await fetch(`https://tech-innovation-server.vercel.app/reviews/${id}`);
     const data = await res.json();
     return data;
 }

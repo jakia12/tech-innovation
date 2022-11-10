@@ -59,7 +59,7 @@ const ServiceDetails = () => {
             text: text
         };
 
-        fetch('http://localhost:5000/reviews/', {
+        fetch('https://tech-innovation-server.vercel.app/reviews/', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -95,7 +95,7 @@ const ServiceDetails = () => {
     //access all the reviews
     // 
     useEffect(() => {
-        const url = `http://localhost:5000/reviews?reviewId=${_id}`;
+        const url = `https://tech-innovation-server.vercel.app/reviews?reviewId=${_id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {

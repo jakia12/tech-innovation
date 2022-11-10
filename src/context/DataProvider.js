@@ -10,7 +10,7 @@ const DataProvider = ({ children }) => {
 
     // calling api data
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://tech-innovation-server.vercel.app/services')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
