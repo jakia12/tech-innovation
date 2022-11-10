@@ -18,10 +18,10 @@ const SingleCard = ({ service }) => {
 
 
                 <PhotoProvider>
-                    <PhotoView src={img}>
+                    <PhotoView src={img ? img : "No image available"}>
                         <div className="relative img_wrapper cursor-pointer ">
 
-                            <img class="rounded-t-lg" src={img} alt="" />
+                            <img class="rounded-t-lg" src={img ? img : "No image available"} alt="" />
                             <div className=" link_icon absolute top-1/2 left-1/2 ">
                                 <span className=" text-white text-2xl ">
                                     <AiOutlineLink />
@@ -36,10 +36,10 @@ const SingleCard = ({ service }) => {
 
                 <div class="p-5">
                     <a href="#">
-                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{category}</h5>
+                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{category ? category : "No category available"}</h5>
                     </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{description.slice(0, 100)}</p>
-                    <h4 class="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">${price}</h4>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{description ? description.slice(0, 100) : "No description available"}</p>
+                    <h4 class="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">${price ? price : "No price available"}</h4>
 
                     <Link to={`/services/${_id}`}>
                         <button class="inline-flex items-center py-3 px-7 text-sm font-medium text-center text-white bg-lightBlue rounded-lg hover:bg-deepBlue focus:ring-4 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 my-2">
