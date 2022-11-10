@@ -13,12 +13,15 @@ import Services from './pages/services/Services';
 import ServiceDetails, { loader as serviceLoader } from './pages/serviceDetails/ServiceDetails';
 import PrivateRoute from './route/PrivateRoute';
 import UpdateReview, { loader as reviewLoader } from './pages/updateReview/UpdateReview';
+import Blog from './pages/blog/Blog';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Main />}>
       <Route path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/blog" element={<Blog />} />
+
       <Route path="/services/:serviceId" element={<ServiceDetails />} loader={serviceLoader} />
       <Route path="/reviews" element={<PrivateRoute><Reviews /></PrivateRoute>} />
       <Route path="/reviews/:reviewId" element={<UpdateReview />} loader={reviewLoader} />

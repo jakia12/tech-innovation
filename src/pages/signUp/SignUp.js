@@ -3,6 +3,7 @@ import { Label, TextInput } from 'flowbite-react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import { AuthState } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
 
@@ -121,6 +122,9 @@ const SignUp = () => {
 
 
     //registratin handling
+    //create dynamic title
+    useTitle('Sign Up');
+
     return (
         <section className=" register_section lg:py-20 py-14 bg-nudeBlue ">
             <div className='container mx-auto lg:max-w-7xl md:px-10 px-6'>

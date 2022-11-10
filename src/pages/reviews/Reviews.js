@@ -4,6 +4,7 @@ import Banner2 from '../../images/banner2.jpg';
 import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from '../../hooks/useTitle';
 
 const Reviews = () => {
     const { user } = AuthState();
@@ -44,6 +45,10 @@ const Reviews = () => {
     //react toastify
     const customId1 = "custom-id-yes";
     const customId2 = "custom-id-no";
+
+    //create dynamic title
+    useTitle('Review');
+
     return (
         <>
             <section

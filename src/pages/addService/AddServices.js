@@ -3,6 +3,7 @@ import { TextInput } from 'flowbite-react';
 import Banner2 from '../../images/banner2.jpg';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from '../../hooks/useTitle';
 const AddServices = () => {
 
     //state for form handling
@@ -16,6 +17,9 @@ const AddServices = () => {
     const [title, setTitle] = useState('');
 
     const [description, setDescription] = useState('');
+
+    //create dynamic title
+    useTitle('Add service');
 
 
     //handle form change

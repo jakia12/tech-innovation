@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Label, TextInput } from 'flowbite-react';
 import { AuthState } from '../../context/AuthProvider';
 import { AiOutlineGoogle } from 'react-icons/ai';
+import useTitle from '../../hooks/useTitle';
 
 
 const Login = () => {
@@ -69,6 +70,9 @@ const Login = () => {
                 setLoading(false)
             })
     }
+
+    //create dynamic title
+    useTitle('Login');
     return (
         <section className=" login_section lg:py-20 py-14 bg-nudeBlue ">
             <div className='container mx-auto lg:max-w-7xl md:px-10 px-6'>

@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useTitle from '../../hooks/useTitle';
 
 const NotFound = () => {
+    //create dynamic title
+    useTitle('Not Found');
     return (
         <div className='py-14 lg:py-40 text-center bg-lightGray'>
             <span className='text-9xl font-semibold text-blue-400  my-8'>404</span>

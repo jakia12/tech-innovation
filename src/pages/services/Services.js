@@ -4,6 +4,7 @@ import { DataState } from '../../context/DataProvider';
 import Banner1 from '../../images/banner1.jpg';
 import FadeLoader from "react-spinners/FadeLoader";
 import './Services.css';
+import useTitle from '../../hooks/useTitle';
 
 const Services = () => {
     //state for services data
@@ -20,7 +21,8 @@ const Services = () => {
         borderColor: "red",
     };
 
-
+    //create dynamic title
+    useTitle('Services');
     return (
         <>
             <section

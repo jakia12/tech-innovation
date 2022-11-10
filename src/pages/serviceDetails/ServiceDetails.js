@@ -9,6 +9,7 @@ import { AuthState } from '../../context/AuthProvider';
 import { TextInput } from 'flowbite-react';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from '../../hooks/useTitle';
 
 const ServiceDetails = () => {
 
@@ -117,6 +118,10 @@ const ServiceDetails = () => {
     //react toastify
     const customId1 = "custom-id-yes";
     const customId2 = "custom-id-no";
+
+    //create dynamic title
+    useTitle('Service Details');
+
     return (
         <>
             <section

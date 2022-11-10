@@ -5,6 +5,7 @@ import FadeLoader from "react-spinners/FadeLoader";
 import './Home.css';
 import SingleCard from '../../components/singleCard/SingleCard';
 import { DataState } from '../../context/DataProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
     const [services, setServices] = useState([]);
@@ -36,6 +37,8 @@ const Home = () => {
         borderColor: "red",
     };
 
+    //create dynamic title
+    useTitle('Home');
     return (
         <>
             <section className='slider_section'>

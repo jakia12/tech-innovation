@@ -7,6 +7,7 @@ import { AuthState } from '../../context/AuthProvider';
 import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from '../../hooks/useTitle';
 
 const UpdateReview = () => {
     const { user } = AuthState();
@@ -72,6 +73,10 @@ const UpdateReview = () => {
     //react toastify
     const customId1 = "custom-id-yes";
     const customId2 = "custom-id-no";
+
+    //create dynamic title
+    useTitle('Update Reviews');
+
     return (
         <>
             <section
