@@ -21,5 +21,8 @@ To book the services, the user needs to be registered first and then they can al
 * React js
 * Express js
 * Mongodb
+
+
+## Tools being used:-
 * Firebase Authentication
 * Jwt token Authorization
