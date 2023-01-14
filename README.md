@@ -3,7 +3,7 @@
 ### Live site - [Tech Innovation](https://service-review-a2562.web.app)
 
 ## Description
-Tech Innovation is an online IT service providing web Application where people can get different sorts of services such as web design, web application, UI design, graphic design, SEO, and cyber security.
+Tech Innovation is an online web Application to provide IT services . Where people can get different sorts of services such as web design, web application, UI design, graphic design, SEO, and cyber security.
 
 To book the services, the user needs to be registered first and then they can also add a review for a specific service.
 
